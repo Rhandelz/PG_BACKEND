@@ -1,9 +1,7 @@
 const corsOptions = {
   origin: (origin, callback) => {
     if (
-      [
-        "https://6511ab20b70803390434015f--nimble-tarsier-8326cb.netlify.app",
-      ].indexOf(origin) !== -1 ||
+      ["https://photo-gallery-5r0s.onrender.com"].indexOf(origin) !== -1 ||
       !origin
     ) {
       callback(null, true);
