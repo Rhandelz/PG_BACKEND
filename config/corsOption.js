@@ -1,7 +1,7 @@
 const corsOptions = {
   origin: (origin, callback) => {
     if (
-      ["https://photo-gallery-5r0s.onrender.com"].indexOf(origin) !== -1 ||
+      ["https://elaborate-lokum-3bb075.netlify.app/"].indexOf(origin) !== -1 ||
       !origin
     ) {
       callback(null, true);
