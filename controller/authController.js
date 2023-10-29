@@ -12,7 +12,7 @@ const login = asyncHandler(async (req, res) => {
     res.status(401).json({ message: "All field are mandatory" });
   }
 
-  const foundUser = await User.findOne({ email });
+  const foundUser = await User.findOne({ email }).maxTimeMS(30000);
 
   if (!foundUser) {
     res.status(401).json({ message: "User Not Found" });
@@ -116,7 +116,7 @@ const register = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "All Fields are Mandatory!" });
   }
 
-  const duplicate = await User.findOne({ name: name });
+  const duplicate = await User.findOne({ name: name }).maxTimeMS(30000);
 
   const userBio = bio || "";
   const userProfile = profile || "";
@@ -195,7 +195,7 @@ const editUser = asyncHandler(async (req, res) => {
     res.status(400).json({ message: "User Not Found !" });
   }
 
-  const duplicate = await User.findOne({ name }).exec();
+  const duplicate = await User.findOne({ name }).maxTimeMS(30000).exec();
 
   if (foundUser?._id.toHexString() !== id) {
     return res.status(401).json({ message: "Name Already Taken" });
